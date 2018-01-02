@@ -203,7 +203,7 @@ checkPort p = do
 -- | Get a random, unused port.
 getNewPort :: DevelOpts -> IO Int
 getNewPort opts = do
-    (port, socket) <- bindRandomPortTCP "*"
+    (port, socket) <- bindRandomPortTCP "127.0.0.1"
     when (verbose opts) $ sayString $ "Got new port: " ++ show port
     Network.Socket.close socket
     return port
